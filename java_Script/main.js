@@ -10,18 +10,14 @@ let myHumidity = document.querySelector(".humidity");
 let myPressure = document.querySelector(".pressure");
 let myBody = document.querySelector(".myBody");
 myBttn.addEventListener("click", () => {
-  fetch(`https://api.teleport.org/api/urban_areas/slug:${myInput.value}/images
+  fetch(`
+    https://api.unsplash.com/search/photos?query=${myInput.value}&client_id=LT-f3weaPT3HQ9LSpHS0rlQuC9uz_hk5ky-jTqufz5k
   `)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
-      if (data == "") {
-        console.log("ok");
-      } else {
-        myBody.style.backgroundImage = `url("${data.photos[0].image.web}")`;
-        console.log(data);
-      }
+      myBody.style.backgroundImage = `url("${data.results[0].urls.full}")`;
     });
 
   fetch(
